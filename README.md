@@ -1,166 +1,244 @@
-MyEcommerce Customer-360-Loyalty Salesforce Project
-📌 Overview
+🛒 MyEcommerce Customer-360-loyatly Salesforce Project
 
-The MyEcommerce Salesforce Project is a complete Salesforce CRM implementation that simulates an e-commerce loyalty program.
-It covers end-to-end flows, automation, and console experience for Support Agents and Managers.
 
-This project was built as part of a Salesforce training/learning journey and demonstrates:
 
-Custom Objects & Relationships
+📖 Table of Contents
 
-Flows & Automations
+Overview
 
-Validation Rules
+Tech Stack
 
-Approval Processes
+Project Architecture
+
+Features by Phase
+
+Setup Instructions
+
+Usage Guide
 
 Reports & Dashboards
 
-Apex Triggers and Classes
+Testing
 
-VS Code & GitHub Integration
+Screenshots
 
-🚀 Features Implemented
-🔹 Phase 1: Data Model & Custom Objects
+Future Roadmap
 
-Created Loyalty_Member__c, Reward_Redemption__c, Loyalty_Points_History__c, Loyalty_Transaction__c, Error_Log__c.
+Contributors
 
-Added custom fields like Loyalty_Points_Balance__c, Reward_Name__c, Amount__c, etc.
+📌 Overview
 
-Established relationships with Contact & Order.
+The MyEcommerce Salesforce Project is a Salesforce CRM implementation designed to simulate an E-commerce Loyalty Program.
 
-🔹 Phase 2: Flows & Automations
+It demonstrates Admin + Developer skills including:
+✔ Data modeling with custom objects
+✔ Record-triggered automation using Flows
+✔ Approval processes for sensitive actions
+✔ Validation rules for data integrity
+✔ Apex triggers & classes for advanced logic
+✔ Reports & dashboards for business insights
+✔ Deployment & version control via VS Code + GitHub
 
-Add Loyalty Points on Order Activation (Record-Triggered Flow).
+🛠 Tech Stack
 
-Claim Reward Portal Flow for users to redeem points.
+Salesforce Platform
 
-Inactive Customer Reengagement Flow with email alerts.
+Apex (Triggers, Classes, Test Cases)
 
-Sync Loyalty Tier to Contact Flow.
+Salesforce Flows
 
-Error Logging Flow to capture flow errors.
+Approval Processes
 
-🔹 Phase 3: Validation Rules
+Validation Rules
+
+Reports & Dashboards
+
+Salesforce CLI (sfdx/sf)
+
+Visual Studio Code
+
+GitHub
+
+🏗 Project Architecture
+graph TD
+    A[Contact] -->|Related To| B[Loyalty Member__c]
+    B --> C[Loyalty Points History__c]
+    B --> D[Reward Redemption__c]
+    B --> E[Loyalty Transaction__c]
+    F[Order] -->|Triggers Loyalty Points| B
+    G[Error Log__c] -->|Stores Flow Errors| Admin
+
+🚀 Features by Phase
+Phase 1: Data Model
+
+Custom Objects: Loyalty_Member__c, Reward_Redemption__c, Loyalty_Points_History__c, Loyalty_Transaction__c, Error_Log__c
+
+Custom Fields: Loyalty Points Balance, Tier, Reward Name, Amount, etc.
+
+Phase 2: Flows & Automation
+
+Order Activation → Loyalty Points Flow
+
+Reward Claim Portal Flow
+
+Inactive Customer Reengagement Flow
+
+Sync Loyalty Tier to Contact Flow
+
+Error Logging Flow
+
+Phase 3: Validation Rules
 
 Prevent negative loyalty points.
 
-Require tier when points exist.
+Tier required if points exist.
 
-Redemption amount must be positive.
+Redemption amount > 0.
 
-🔹 Phase 4: Approval Processes
+Phase 4: Approval Processes
 
-Contact Manager Approval (Contact object).
+Contact → Manager Approval.
 
-High-Value Reward Redemption Approval (Reward_Redemption__c object).
+High-Value Reward Redemption → Approval required.
 
-🔹 Phase 5: Apex Code
+Phase 5: Apex Development
 
-OrderTriggerHandler.cls → Adds loyalty points when orders are activated.
+OrderTriggerHandler.cls → Handles loyalty point calculation.
 
-OrderTrigger.trigger → Calls handler logic.
+OrderTrigger.trigger → Fires when Orders are activated.
 
-Unit tests created for trigger handler.
+OrderTriggerHandlerTest.cls → Unit testing (≥ 75% coverage pending).
 
-🔹 Phase 6: Profiles & Permission Sets
+Phase 6: Profiles & Permission Sets
 
-Support Agent Profile → Access to case & loyalty management.
+Support Agent Profile
 
-Support Manager Profile → Additional approval permissions.
+Support Manager Profile
 
-Case Team Lead Access Permission Set.
+Permission Sets: Case Team Lead Access, Experience Profile Manager
 
-Experience Profile Manager Permission Set.
+Phase 7: Support Agent Console
 
-🔹 Phase 7: Support Agent Console
+Console workspace for agents.
 
-Configured a Console App with:
+Tabs: Cases, Orders, Loyalty Members.
 
-Orders, Loyalty Members, Cases.
+Record detail + related lists configured.
 
-Related lists and record detail views.
+Phase 8: Reports & Dashboards
 
-🔹 Phase 8: Reports & Dashboards
+Reports: Inactive Customers, Reward Redemptions, Loyalty Points by Member, Orders Driving Points, Loyalty Members by Tier.
 
-Reports created:
+Dashboard: Loyalty Program Dashboard.
 
-Inactive Customers Reengaged
+Phase 9: Deployment & GitHub
 
-Reward Redemptions by Status
+Metadata retrieved using Salesforce CLI.
 
-Loyalty Points Balance by Member
+Code and config stored in GitHub repo under force-app/main/default/.
 
-Orders Driving Loyalty Points
+Phase 10: Testing & Validation
 
-Loyalty Members by Tier
+Debugged all flows.
 
-Loyalty Program Dashboard created to visualize KPIs.
+Tested approvals.
 
-🔹 Phase 9: Deployment & GitHub
+Validation rules working.
 
-Project metadata retrieved with VS Code & Salesforce CLI.
-
-Source organized under force-app/main/default/.
-
-Stored on GitHub repository for version control.
-
-🔹 Phase 10: Testing & Validation
-
-Debugged and tested flows.
-
-Unit tests written (pending full coverage).
-
-Validation rules confirmed.
+Apex test classes partially complete.
 
 ⚙️ Setup Instructions
 
-Clone the repository:
+Clone Repo
 
 git clone <your-repo-url>
 cd MyEcommerceProject
 
 
-Authenticate with Salesforce org:
+Authenticate Org
 
-sf org login web --set-default --alias mySandbox
+sf org login web --alias mySandbox --set-default
 
 
-Push metadata to org:
+Deploy Metadata
 
 sf project deploy start --target-org mySandbox
 
 
-Assign Profiles & Permission Sets to test users.
+Assign Permissions
 
-Test Flows & Approvals inside Salesforce.
+Support Agent Profile → Agents.
+
+Support Manager Profile → Managers.
+
+Activate Flows
+
+Navigate to Setup → Flows → Activate required flows.
+
+📘 Usage Guide
+
+Create an Order → Loyalty points are added automatically.
+
+Use Claim Reward Portal Flow → Redeem rewards if points are sufficient.
+
+Inactive Customer Flow → Sends re-engagement emails.
+
+Managers can approve/reject reward redemptions.
 
 📊 Reports & Dashboards
 
-Navigate to App Launcher → Dashboards → Loyalty Program Dashboard.
+Reports Folder: Public Reports
 
-Navigate to Reports → Public Reports to see all reports.
+Dashboard Folder: Private Dashboards
 
-✅ Testing
+Key Reports:
 
-Activate flows before testing.
+Loyalty Points Balance by Member
 
-Run OrderTriggerHandlerTest from Developer Console.
+Orders Driving Loyalty Points
 
-Check Error_Log__c object for flow execution errors.
+Reward Redemptions by Status
 
-📌 Future Enhancements
+Dashboard: Loyalty Program Dashboard
 
-Improve test coverage to >75%.
+🧪 Testing
 
-Add more granular dashboards.
+Run Apex Test Classes from Developer Console:
 
-Extend approval process to include multi-level approvals.
+OrderTriggerHandlerTest
 
-Integration with external systems for loyalty redemption.
+Debug Flows via Flow Builder → Debug.
+
+Check Error_Log__c records for failures.
+
+📷 Screenshots
+
+(Place actual screenshots here once captured)
+
+Data Model (Schema Builder)
+
+Loyalty Member Record Page
+
+Reward Redemption Approval Screen
+
+Inactive Customer Reengagement Flow Debug
+
+Loyalty Program Dashboard
+
+🔮 Future Roadmap
+
+✅ Add more unit tests for > 90% coverage
+
+✅ Add CI/CD pipeline with GitHub Actions
+
+✅ Enhance dashboards with drill-down reports
+
+✅ Multi-level approvals for redemptions
 
 👨‍💻 Contributors
 
-Ganesh (Lead Developer & Admin)
+Ganesh (Lead Developer & Salesforce Admin)
 
-Guided Salesforce phases: Data Modeling, Flows, Apex, Reports, Console
+Built & tested all project phases
+
+Configured flows, approvals, dashboards, and triggers
