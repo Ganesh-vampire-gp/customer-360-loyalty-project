@@ -211,19 +211,9 @@ Debug Flows via Flow Builder → Debug.
 
 Check Error_Log__c records for failures.
 
-📷 Screenshots
+<img width="1107" height="1380" alt="Loyalty Program Dashboard" src="https://github.com/user-attachments/assets/c630096f-9471-4671-8968-cc1058c7d79f" />
+<img width="1359" height="534" alt="Screenshot 2025-09-26 122405" src="https://github.com/user-attachments/assets/4e047d03-5a5c-40fe-a2fc-b83a90f4ef08" />
 
-(Place actual screenshots here once captured)
-
-Data Model (Schema Builder)
-
-Loyalty Member Record Page
-
-Reward Redemption Approval Screen
-
-Inactive Customer Reengagement Flow Debug
-
-Loyalty Program Dashboard
 
 🔮 Future Roadmap
 
