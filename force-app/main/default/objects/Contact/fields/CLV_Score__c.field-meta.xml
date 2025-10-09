@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>CLV_Score__c</fullName>
+    <label>CLV Score</label>
+    <summarizedField>Loyalty_Member__c.CLV_Score__c</summarizedField>
+    <summaryForeignKey>Loyalty_Member__c.Contact1__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <type>Summary</type>
+</CustomField>

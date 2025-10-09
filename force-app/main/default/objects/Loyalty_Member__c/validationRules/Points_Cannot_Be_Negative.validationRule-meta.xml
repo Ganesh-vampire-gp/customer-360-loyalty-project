@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Points_Cannot_Be_Negative</fullName>
+    <active>true</active>
+    <errorConditionFormula>Loyalty_Points_Balance__c &lt; 0</errorConditionFormula>
+    <errorDisplayField>Loyalty_Points_Balance__c</errorDisplayField>
+    <errorMessage>Loyalty Points Balance cannot be negative.</errorMessage>
+</ValidationRule>

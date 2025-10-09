@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Tier_Required_When_Points</fullName>
+    <active>true</active>
+    <errorConditionFormula>AND(
+   Loyalty_Points_Balance__c &gt; 0,
+   ISBLANK(TEXT(Loyalty_Tier__c))
+)</errorConditionFormula>
+    <errorDisplayField>Loyalty_Tier__c</errorDisplayField>
+    <errorMessage>Loyalty Tier must be selected when points are greater than 0.</errorMessage>
+</ValidationRule>

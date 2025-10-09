@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Loyalty_Points_Balance__c</fullName>
+    <label>Loyalty Points Balance</label>
+    <summarizedField>Loyalty_Member__c.Loyalty_Points_Balance__c</summarizedField>
+    <summaryForeignKey>Loyalty_Member__c.Contact1__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <type>Summary</type>
+</CustomField>
